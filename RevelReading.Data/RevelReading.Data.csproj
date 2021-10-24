@@ -67,6 +67,7 @@
     <Compile Include="Entities\ResourceDataClasses\PhonicsResource.cs" />
     <Compile Include="Entities\ResourceDataClasses\VocabularyResource.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\ResourceDataClasses\Resource.cs" />
     <Compile Include="Entities\School.cs" />

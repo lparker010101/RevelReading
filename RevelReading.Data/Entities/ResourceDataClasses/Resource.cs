@@ -12,11 +12,22 @@ namespace RevelReading.Data
     {
         [Key]
         public int ResourceId { get; set; }
+
+        [Required]
         public string ResourceName { get; set; }
+
+        [Required]
+        [MaxLength(100, ErrorMessage ="The description must be 100 characters or less.")]
         public string Description { get; set; }
+
+        [Required]
         public DateTimeOffset DateCreatedAndDownloaded { get; set; }
-        public bool isDownloadable { get; set; }
+
+        public bool IsDownloadable { get; set; }
         public int SchoolGradeLevel { get; set; }
+
+        [Required]
+        [MaxLength(15, ErrorMessage ="The reading category must be 15 characters or less."), MinLength(5)]
         public string ReadingCategory { get; set; }
 
         [ForeignKey("Educator")]

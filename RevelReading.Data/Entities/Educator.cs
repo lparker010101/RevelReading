@@ -10,7 +10,7 @@ namespace RevelReading.Data
 {
     public class Educator : District
     {
-        [Key]
+        [Key, Column(Order = 0), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EducatorId { get; set; }
 
         [Required]
@@ -22,7 +22,7 @@ namespace RevelReading.Data
         [Required]
         public string EmailAddress { get; set; }
 
-        [ForeignKey("School")]
+        [ForeignKey("School"), Column(Order = 1), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SchoolId { get; set; }
 
         [Required]
