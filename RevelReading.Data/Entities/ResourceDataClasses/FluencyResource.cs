@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevelReading.Data
+namespace RevelReading.Data.Entities.ResourceDataClasses
 {
-    public class Resource
+    public class FluencyResource : Resource
     {
     }
 }

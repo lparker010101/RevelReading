@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevelReading.Data
+namespace RevelReading.Data.Entities.Enumerations
 {
-    public class Educator
+    class Vocabulary
     {
     }
 }
