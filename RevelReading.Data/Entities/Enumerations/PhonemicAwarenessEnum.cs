@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RevelReading.Data.Entities.Enumerations
 {
-    public enum PhonemicAwareness
+    public enum PhonemicAwarenessEnum
     {
         [Display(Name = "Rhyming Visuals")]
         RhymingVisuals = 1, 
