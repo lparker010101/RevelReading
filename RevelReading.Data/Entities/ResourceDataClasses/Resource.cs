@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace RevelReading.Data
 {
+    [Table("Resource")]
     public class Resource
     {
         [Key]
@@ -31,7 +32,7 @@ namespace RevelReading.Data
         public string ReadingCategory { get; set; }
 
         [ForeignKey("Educator")]
-        public string EducatorId { get; set; }
+        public int EducatorId { get; set; }
         public Educator Educator { get; set; }
 
         public DateTime AccessDate { get; set; }

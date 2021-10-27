@@ -32,7 +32,7 @@ namespace RevelReading.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<Educator> Educators { get; set; } 
+        public DbSet<Educator> Educators { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<Resource> Resources { get; set; }
 
@@ -65,6 +65,5 @@ namespace RevelReading.Data
         }
 
     }
-
 
 }
