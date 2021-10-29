@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace RevelReading.Data
 {
-    public enum ReadingResources { Comprehension, Fluency, PhonemicAwareness, Phonics, Vocabulary}
-
     [Table("Resource")]
     public class Resource
     {
