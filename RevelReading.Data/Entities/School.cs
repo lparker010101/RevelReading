@@ -18,7 +18,7 @@ namespace RevelReading.Data
         [Required]
         public string SchoolName { get; set; }
 
-        public byte[] SchoolPhoto { get; set; }
+        public string SchoolImagePath { get; set; }
         public string SchoolGradeLevels { get; set; }
         public string LowestGradeLevel { get; set; }
         public int HighestGradeLevel { get; set; }

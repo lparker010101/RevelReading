@@ -15,7 +15,7 @@ namespace RevelReading.Data
         [Key, Column(Order = 0), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EducatorId { get; set; }
 
-        public byte[] UserPhoto { get; set; }
+        public string UserPhotoImagePath { get; set; }
 
         [Required]
         public string FirstName { get; set; }
