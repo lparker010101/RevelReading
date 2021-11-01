@@ -24,6 +24,8 @@ namespace RevelReading.Data
         [Required]
         public DateTimeOffset DateCreatedAndDownloaded { get; set; }
 
+        public DateTimeOffset? ModifiedResource { get; set; }
+
         public bool IsDownloadable { get; set; }
         public int SchoolGradeLevel { get; set; }
 
