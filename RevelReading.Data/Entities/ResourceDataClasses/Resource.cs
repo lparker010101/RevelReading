@@ -22,12 +22,13 @@ namespace RevelReading.Data
         public string Description { get; set; }
 
         [Required]
-        public DateTimeOffset DateCreatedAndDownloaded { get; set; }
+        public DateTimeOffset DateCreatedAndDownloaded { get; set; } // DateTimeOffset is a value type, they can't be null.  It is good to 
+                                                                     // to store dates with DateTimeOffset, this way it will account for time zones.
 
-        public DateTimeOffset? ModifiedResource { get; set; }
+        public DateTimeOffset? ModifiedResource { get; set; } // Adding the ? null-conditional operator on the ModifiedResource. It allows a value type to be null.
 
         public bool IsDownloadable { get; set; }
-        public int SchoolGradeLevel { get; set; }
+        public string SchoolGradeLevel { get; set; }
 
         [Required]
         [MaxLength(15, ErrorMessage ="The reading category must be 15 characters or less."), MinLength(5)]
@@ -39,6 +40,5 @@ namespace RevelReading.Data
 
         public DateTime AccessDate { get; set; }
         public int MyProperty { get; set; }
-
     }
 }
