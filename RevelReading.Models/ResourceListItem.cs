@@ -29,10 +29,12 @@ namespace RevelReading.Models
         public string ReadingCategory { get; set; }
 
         public byte[] ResourceImage { get; set; }
+        public string Content { get; set; }
 
-    public ResourceListItem() { }
 
-        public ResourceListItem(int resourceId, string resourceName, string description, DateTimeOffset dateCreatedAndDownloaded, DateTimeOffset? modifiedResource, string schoolGradeLevel, string readingCategory, byte[] resourceImage)
+        public ResourceListItem() { }
+
+        public ResourceListItem(int resourceId, string resourceName, string description, DateTimeOffset dateCreatedAndDownloaded, DateTimeOffset? modifiedResource, string schoolGradeLevel, string readingCategory, byte[] resourceImage, string content)
         {
             this.ResourceId = resourceId;
             this.ResourceName = resourceName;
@@ -42,6 +44,7 @@ namespace RevelReading.Models
             this.SchoolGradeLevel = schoolGradeLevel;
             this.ReadingCategory = readingCategory;
             this.ResourceImage = resourceImage;
+            this.Content = content;
         }
     }
 }

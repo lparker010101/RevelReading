@@ -12,6 +12,7 @@ namespace RevelReading.WebMVC.Controllers
                                                  // Our path will be localhost:xxxxx/Resource
     {
         // GET: Resource
+        [HttpGet]
         public ActionResult Index() // The ActionResult is a return type.  It allows us to return a View() method.  That 
                                     // View() method will return a view that corresponds to the ResourceController.
                                     // When running the app, we can go to localhost:xxxxx/Reource/Index.  The path 
@@ -21,5 +22,25 @@ namespace RevelReading.WebMVC.Controllers
             var model = new ResourceListItem[0]; // Initializing a new instance of the ResourceListItem as an IEnumerable with the [0] syntax.  
             return View(model); // When we go to that path, it will return a view for that path.
         }
+
+        // GET
+        [HttpGet]
+        public ActionResult Create() // Right click to add a view after the ResourceCreate model is complete.
+        {
+            return View(); // Need to have a view and we need a model for the view.
+        }
+
+        [HttpPost] // Here we write a post method that will eventually push the data inputted in the view through our service and into the database.  
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ResourceCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View(model);
+        }
+
+
     }
 }
