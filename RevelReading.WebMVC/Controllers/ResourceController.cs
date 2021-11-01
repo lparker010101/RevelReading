@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RevelReading.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 
 namespace RevelReading.WebMVC.Controllers
 {
+    [Authorize] // This annotation makes it so that the views are accessible only to logged in users.
     public class ResourceController : Controller // The first word in the controller name will be the first part of our path.
                                                  // Our path will be localhost:xxxxx/Resource
     {
@@ -16,7 +18,8 @@ namespace RevelReading.WebMVC.Controllers
                                     // starts with the name of the controller (without the word controller), then the name
                                     // of the action, which is Index.
         {
-            return View(); // When we go to that path, it will return a view for that path.
+            var model = new ResourceListItem[0]; // Initializing a new instance of the ResourceListItem as an IEnumerable with the [0] syntax.  
+            return View(model); // When we go to that path, it will return a view for that path.
         }
     }
 }

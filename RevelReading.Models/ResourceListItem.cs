@@ -16,7 +16,7 @@ namespace RevelReading.Models
 
         public string Description { get; set; }
 
-        [Display(Name = "Resource Added")]
+        [Display(Name = "Resource Created")]
         public DateTimeOffset DateCreatedAndDownloaded { get; set; }
 
         [Display(Name = "Resource Modified")]
