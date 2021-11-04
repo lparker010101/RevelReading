@@ -264,7 +264,7 @@
       <Name>RevelReading.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\RevelReading.Models\RevelReading.Models.csproj">
-      <Project>{72df6848-c04a-4a32-867e-6763566e42b5}</Project>
+      <Project>{4101E6DF-A968-4D55-ACCD-6F46F53D3E33}</Project>
       <Name>RevelReading.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\RevelReading.Services\RevelReading.Services.csproj">

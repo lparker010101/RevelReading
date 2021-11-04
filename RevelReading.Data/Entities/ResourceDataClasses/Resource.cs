@@ -12,7 +12,7 @@ namespace RevelReading.Data
     public class Resource
     {
         [Key]
-        public int ResourceId { get; set; }
+        public Guid ResourceId { get; set; }
 
         [Required]
         public string ResourceName { get; set; }

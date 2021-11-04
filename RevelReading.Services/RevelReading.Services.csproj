@@ -54,11 +54,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EducatorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceService.cs" />
+    <Compile Include="SchoolService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RevelReading.Data\RevelReading.Data.csproj">
+      <Project>{4B3A24AA-3C4A-441E-816D-9707E77EEE65}</Project>
+      <Name>RevelReading.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RevelReading.Models\RevelReading.Models.csproj">
+      <Project>{4101E6DF-A968-4D55-ACCD-6F46F53D3E33}</Project>
+      <Name>RevelReading.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
