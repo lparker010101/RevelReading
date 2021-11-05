@@ -68,9 +68,13 @@
     <Compile Include="Entities\ResourceDataClasses\PhonicsResource.cs" />
     <Compile Include="Entities\ResourceDataClasses\VocabularyResource.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202111050107270_ChangesMade.cs" />
-    <Compile Include="Migrations\202111050107270_ChangesMade.Designer.cs">
-      <DependentUpon>202111050107270_ChangesMade.cs</DependentUpon>
+    <Compile Include="Migrations\202111050146270_AddedOwnerIdToResourceClass.cs" />
+    <Compile Include="Migrations\202111050146270_AddedOwnerIdToResourceClass.Designer.cs">
+      <DependentUpon>202111050146270_AddedOwnerIdToResourceClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111050147404_AddedToResourceClassManyProperties.cs" />
+    <Compile Include="Migrations\202111050147404_AddedToResourceClassManyProperties.Designer.cs">
+      <DependentUpon>202111050147404_AddedToResourceClassManyProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,8 +86,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111050107270_ChangesMade.resx">
-      <DependentUpon>202111050107270_ChangesMade.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111050146270_AddedOwnerIdToResourceClass.resx">
+      <DependentUpon>202111050146270_AddedOwnerIdToResourceClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111050147404_AddedToResourceClassManyProperties.resx">
+      <DependentUpon>202111050147404_AddedToResourceClassManyProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

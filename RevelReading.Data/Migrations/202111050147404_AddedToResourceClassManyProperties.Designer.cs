@@ -7,13 +7,13 @@ namespace RevelReading.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class ChangesMade : IMigrationMetadata
+    public sealed partial class AddedToResourceClassManyProperties : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangesMade));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedToResourceClassManyProperties));
         
         string IMigrationMetadata.Id
         {
-            get { return "202111050107270_ChangesMade"; }
+            get { return "202111050147404_AddedToResourceClassManyProperties"; }
         }
         
         string IMigrationMetadata.Source

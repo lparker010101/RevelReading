@@ -15,10 +15,13 @@ namespace RevelReading.Data
         public int ResourceId { get; set; }
 
         [Required]
+        public Guid OwnerId { get; set; }
+
+        [Required]
         public string ResourceName { get; set; }
 
         [Required]
-        [MaxLength(100, ErrorMessage ="The description must be 100 characters or less.")]
+        [MaxLength(100, ErrorMessage = "The description must be 100 characters or less.")]
         public string Description { get; set; }
 
         [Required]
@@ -31,7 +34,7 @@ namespace RevelReading.Data
         public string SchoolGradeLevel { get; set; }
 
         [Required]
-        [MaxLength(15, ErrorMessage ="The reading category must be 15 characters or less."), MinLength(5)]
+        [MaxLength(15, ErrorMessage = "The reading category must be 15 characters or less."), MinLength(5)]
         public string ReadingCategory { get; set; }
 
         [ForeignKey("Educator")]
@@ -39,6 +42,5 @@ namespace RevelReading.Data
         public Educator Educator { get; set; }
 
         public DateTime AccessDate { get; set; }
-        public int MyProperty { get; set; }
     }
 }

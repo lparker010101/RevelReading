@@ -10,9 +10,9 @@ namespace RevelReading.Services
 {
     public class ResourceService
     {
-        private readonly int _userId;
+        private readonly Guid _userId;
 
-        public ResourceService(int userId)
+        public ResourceService(Guid userId)
         {
             _userId = userId;
         }
@@ -22,11 +22,12 @@ namespace RevelReading.Services
             var entity =
                 new Resource()
                 {
-                    ResourceId = _userId,
+                    OwnerId = _userId,
                     ResourceName = model.Title,
                     Description = model.Content,
                     DateCreatedAndDownloaded = DateTimeOffset.Now
                 };
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Resources.Add(entity);
@@ -34,7 +35,7 @@ namespace RevelReading.Services
             }
         }
 
-        // Get Resources() method
+        // Get Resources
         public IEnumerable<ResourceListItem> GetResources()
         {
             using (var ctx = new ApplicationDbContext())
@@ -44,14 +45,14 @@ namespace RevelReading.Services
                 var query =
                     ctx
                         .Resources
-                        .Where(e => e.ResourceId == _userId)
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new ResourceListItem
                                 {
-                                    ResourceId = e.ResourceId,
-                                    Title = e.ResourceName,
-                                    CreatedUtc = e.DateCreatedAndDownloaded,
+                                    //ResourceId = e.ResourceId,
+                                   // Title = e.ResourceName,
+                                   // CreatedUtc = e.DateCreatedAndDownloaded,
                                 });
                 return query.ToArray(); 
             }

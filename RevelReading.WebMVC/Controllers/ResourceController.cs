@@ -14,7 +14,6 @@ namespace RevelReading.WebMVC.Controllers
                                                  // Our path will be localhost:xxxxx/Resource
     {
         // GET: Resource
-        [HttpGet]
         public ActionResult Index() // The ActionResult is a return type.  It allows us to return a View() method.  That 
                                     // View() method will return a view that corresponds to the ResourceController.
                                     // When running the app, we can go to localhost:xxxxx/Reource/Index.  The path 
@@ -22,7 +21,7 @@ namespace RevelReading.WebMVC.Controllers
                                     // of the action, which is Index.  The Index() method displays all the resources for the current user.
                                     // It calls upon the methods and services.
         {
-            var userId = int.Parse(User.Identity.GetUserId());
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ResourceService(userId);
             var model = service.GetResources();
                                 //var model = new ResourceListItem[0]; Initializing a new instance of the ResourceListItem as an IEnumerable with the [0] syntax.  
@@ -45,7 +44,7 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
             }
 
-            var userId = int.Parse(User.Identity.GetUserId());
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ResourceService(userId);
 
             service.CreateResource(model);
@@ -53,7 +52,5 @@ namespace RevelReading.WebMVC.Controllers
             return RedirectToAction("Index");  // The Create(ResourceCreate model) method makes sure the model is valid, grabs the current
                                                // userId, calls on CreateResource, and returns the user back to the index view.
         }
-
-
     }
 }
