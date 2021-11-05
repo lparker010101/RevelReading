@@ -1,4 +1,6 @@
-﻿using RevelReading.Models;
+﻿using Microsoft.AspNet.Identity;
+using RevelReading.Models;
+using RevelReading.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +19,13 @@ namespace RevelReading.WebMVC.Controllers
                                     // View() method will return a view that corresponds to the ResourceController.
                                     // When running the app, we can go to localhost:xxxxx/Reource/Index.  The path 
                                     // starts with the name of the controller (without the word controller), then the name
-                                    // of the action, which is Index.
+                                    // of the action, which is Index.  The Index() method displays all the resources for the current user.
+                                    // It calls upon the methods and services.
         {
-            var model = new ResourceListItem[0]; // Initializing a new instance of the ResourceListItem as an IEnumerable with the [0] syntax.  
+            var userId = int.Parse(User.Identity.GetUserId());
+            var service = new ResourceService(userId);
+            var model = service.GetResources();
+                                //var model = new ResourceListItem[0]; Initializing a new instance of the ResourceListItem as an IEnumerable with the [0] syntax.  
             return View(model); // When we go to that path, it will return a view for that path.
         }
 
@@ -34,11 +40,18 @@ namespace RevelReading.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ResourceCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
-            }
             return View(model);
+            }
+
+            var userId = int.Parse(User.Identity.GetUserId());
+            var service = new ResourceService(userId);
+
+            service.CreateResource(model);
+
+            return RedirectToAction("Index");  // The Create(ResourceCreate model) method makes sure the model is valid, grabs the current
+                                               // userId, calls on CreateResource, and returns the user back to the index view.
         }
 
 

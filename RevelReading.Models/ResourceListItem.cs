@@ -9,7 +9,7 @@ namespace RevelReading.Models
 {
     public class ResourceListItem
     {
-        public Guid ResourceId { get; set; }
+        public int ResourceId { get; set; }
         public string Title { get; set; }
 
         [Display(Name = "Created")]

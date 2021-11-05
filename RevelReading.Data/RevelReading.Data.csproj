@@ -68,33 +68,9 @@
     <Compile Include="Entities\ResourceDataClasses\PhonicsResource.cs" />
     <Compile Include="Entities\ResourceDataClasses\VocabularyResource.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202110270106527_AddressClassCreated.cs" />
-    <Compile Include="Migrations\202110270106527_AddressClassCreated.Designer.cs">
-      <DependentUpon>202110270106527_AddressClassCreated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110290046021_EnumReadingResourcesWasAddedToResourceClass.cs" />
-    <Compile Include="Migrations\202110290046021_EnumReadingResourcesWasAddedToResourceClass.Designer.cs">
-      <DependentUpon>202110290046021_EnumReadingResourcesWasAddedToResourceClass.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110290120187_ChangedUserProfilePictureToAPath.cs" />
-    <Compile Include="Migrations\202110290120187_ChangedUserProfilePictureToAPath.Designer.cs">
-      <DependentUpon>202110290120187_ChangedUserProfilePictureToAPath.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110290125143_DeletedSomethingFromResourceTable.cs" />
-    <Compile Include="Migrations\202110290125143_DeletedSomethingFromResourceTable.Designer.cs">
-      <DependentUpon>202110290125143_DeletedSomethingFromResourceTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110312338451_AddressesUpdated.cs" />
-    <Compile Include="Migrations\202110312338451_AddressesUpdated.Designer.cs">
-      <DependentUpon>202110312338451_AddressesUpdated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110312355448_ChangedStringToIntOnIds.cs" />
-    <Compile Include="Migrations\202110312355448_ChangedStringToIntOnIds.Designer.cs">
-      <DependentUpon>202110312355448_ChangedStringToIntOnIds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111010113357_ChangesMadeToTypeForGradeLevels.cs" />
-    <Compile Include="Migrations\202111010113357_ChangesMadeToTypeForGradeLevels.Designer.cs">
-      <DependentUpon>202111010113357_ChangesMadeToTypeForGradeLevels.cs</DependentUpon>
+    <Compile Include="Migrations\202111050045534_ChangesMadeInClasses.cs" />
+    <Compile Include="Migrations\202111050045534_ChangesMadeInClasses.Designer.cs">
+      <DependentUpon>202111050045534_ChangesMadeInClasses.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,26 +82,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110270106527_AddressClassCreated.resx">
-      <DependentUpon>202110270106527_AddressClassCreated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110290046021_EnumReadingResourcesWasAddedToResourceClass.resx">
-      <DependentUpon>202110290046021_EnumReadingResourcesWasAddedToResourceClass.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110290120187_ChangedUserProfilePictureToAPath.resx">
-      <DependentUpon>202110290120187_ChangedUserProfilePictureToAPath.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110290125143_DeletedSomethingFromResourceTable.resx">
-      <DependentUpon>202110290125143_DeletedSomethingFromResourceTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110312338451_AddressesUpdated.resx">
-      <DependentUpon>202110312338451_AddressesUpdated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110312355448_ChangedStringToIntOnIds.resx">
-      <DependentUpon>202110312355448_ChangedStringToIntOnIds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111010113357_ChangesMadeToTypeForGradeLevels.resx">
-      <DependentUpon>202111010113357_ChangesMadeToTypeForGradeLevels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111050045534_ChangesMadeInClasses.resx">
+      <DependentUpon>202111050045534_ChangesMadeInClasses.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

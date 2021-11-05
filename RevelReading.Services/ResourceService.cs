@@ -1,6 +1,5 @@
 ﻿using RevelReading.Data;
 using RevelReading.Models;
-using RevelReading.Services.ModelHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,9 @@ namespace RevelReading.Services
 {
     public class ResourceService
     {
-        private readonly Guid _userId;
+        private readonly int _userId;
 
-        public ResourceService(Guid userId)
+        public ResourceService(int userId)
         {
             _userId = userId;
         }
