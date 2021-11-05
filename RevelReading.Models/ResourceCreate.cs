@@ -9,6 +9,8 @@ namespace RevelReading.Models
 {
     public class ResourceCreate
     {
+        public int EducatorId { get; set; }
+
         [Required]
         [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
         [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
@@ -16,5 +18,10 @@ namespace RevelReading.Models
 
         [MaxLength(8000)]
         public string Content { get; set; }
+
+        [MaxLength(10)]
+        public string SchoolGradeLevel { get; set; }
+
+        public string ReadingCategory { get; set; }
     }
 }

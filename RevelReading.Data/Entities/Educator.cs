@@ -12,7 +12,8 @@ namespace RevelReading.Data
     [Table("Educator")]
     public class Educator
     {
-        [Key, Column(Order = 0), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[Key, Column(Order = 0), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int EducatorId { get; set; }
 
         public string UserPhotoImagePath { get; set; }

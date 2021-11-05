@@ -18,22 +18,19 @@ namespace RevelReading.Data
         public Guid OwnerId { get; set; }
 
         [Required]
-        public string ResourceName { get; set; }
+        public string Title { get; set; }
 
         [Required]
         [MaxLength(100, ErrorMessage = "The description must be 100 characters or less.")]
-        public string Description { get; set; }
+        public string Content { get; set; }
 
-        [Required]
-        public DateTimeOffset DateCreatedAndDownloaded { get; set; } // DateTimeOffset is a value type, they can't be null.  It is good to 
-                                                                     // to store dates with DateTimeOffset, this way it will account for time zones.
+        public DateTimeOffset DateCreatedAndDownloaded { get; set; } // DateTimeOffset is a value type, they can't be null.  It is good to                                                       // to store dates with DateTimeOffset, this way it will account for time zones.
 
         public DateTimeOffset? ModifiedResource { get; set; } // Adding the ? null-conditional operator on the ModifiedResource. It allows a value type to be null.
 
         public bool IsDownloadable { get; set; }
         public string SchoolGradeLevel { get; set; }
 
-        [Required]
         [MaxLength(15, ErrorMessage = "The reading category must be 15 characters or less."), MinLength(5)]
         public string ReadingCategory { get; set; }
 

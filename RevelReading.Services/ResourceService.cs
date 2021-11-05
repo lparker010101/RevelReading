@@ -19,19 +19,25 @@ namespace RevelReading.Services
 
         public bool CreateResource(ResourceCreate model)
         {
-            var entity =
-                new Resource()
-                {
-                    OwnerId = _userId,
-                    ResourceName = model.Title,
-                    Description = model.Content,
-                    DateCreatedAndDownloaded = DateTimeOffset.Now
-                };
-
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Resources.Add(entity);
-                return ctx.SaveChanges() == 1;
+                    var entity =
+                        new Resource()
+                        {
+                            EducatorId = model.EducatorId,
+                            OwnerId = _userId,
+                            Title = model.Title,
+                            Content = model.Content,
+                            DateCreatedAndDownloaded = DateTimeOffset.Now,
+                            ModifiedResource = DateTimeOffset.Now,
+                            IsDownloadable = true,
+                            SchoolGradeLevel = model.SchoolGradeLevel,
+                            ReadingCategory = model.ReadingCategory,
+                            AccessDate = DateTime.Now
+                        };
+
+                    ctx.Resources.Add(entity);
+                    return ctx.SaveChanges() == 10;
             }
         }
 
@@ -40,21 +46,22 @@ namespace RevelReading.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                            // A query is a set of instructions that describes what data to retrieve from a given data source (or sources) 
-                            // and what shape and organization the returned data should have.
+                // A query is a set of instructions that describes what data to retrieve from a given data source (or sources) 
+                // and what shape and organization the returned data should have.
                 var query =
                     ctx
                         .Resources
                         .Where(e => e.OwnerId == _userId)
-                        .Select(
+                        .Select(                        //The Select() method takes each source element, transforms it, and returns a sequence of the transformed values.
                             e =>
                                 new ResourceListItem
                                 {
-                                    //ResourceId = e.ResourceId,
-                                   // Title = e.ResourceName,
-                                   // CreatedUtc = e.DateCreatedAndDownloaded,
+                                    ResourceId = e.ResourceId,
+                                    Title = e.Title,
+                                    CreatedUtc = e.DateCreatedAndDownloaded,
                                 });
-                return query.ToArray(); 
+
+                return query.ToArray();
             }
         }
     }
