@@ -31,7 +31,7 @@ namespace RevelReading.WebMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EducatorCreate model)
+        public ActionResult Create(EducatorCreate model)  // Create an educator.
         {
             if (!ModelState.IsValid) return View(model);
             {
@@ -69,3 +69,4 @@ namespace RevelReading.WebMVC.Controllers
     }
 }
 
+// Note: Create views for the models in the controller by right clicking on the methods.
