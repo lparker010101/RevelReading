@@ -35,6 +35,28 @@ namespace RevelReading.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public IEnumerable<EducatorListItem> GetEducators()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Educators
+                        .Where(e => e.OwnerId == _educatorUserId)
+                        .Select(
+                            e =>
+                                new EducatorListItem
+                                {
+                                    EducatorId = e.EducatorId,
+                                    FirstName = e.FirstName,
+                                    LastName = e.LastName,
+                                    EmailAddress = e.EmailAddress,
+                                }
+                                );
+                return query.ToArray();
+            }
+        }
     }
 }
 

@@ -11,12 +11,15 @@ namespace RevelReading.Models
     {
         public int EducatorId { get; set; }
 
+        [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
+        [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Required]
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
 
