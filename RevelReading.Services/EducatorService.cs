@@ -81,6 +81,22 @@ namespace RevelReading.Services
                     };
             }
         }
+
+        public bool UpdateEducator(EducatorEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Educators
+                        .Single(e => e.EducatorId == model.EducatorId && e.OwnerId == _educatorUserId);
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+                entity.EmailAddress = model.EmailAddress;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 
     // The service layer handles the validation logic.  It retrieves and creates

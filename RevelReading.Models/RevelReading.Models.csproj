@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="EducatorCreate.cs" />
     <Compile Include="EducatorDetail.cs" />
+    <Compile Include="EducatorEdit.cs" />
     <Compile Include="EducatorListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceCreate.cs" />

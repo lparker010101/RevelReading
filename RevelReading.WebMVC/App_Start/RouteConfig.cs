@@ -21,3 +21,10 @@ namespace RevelReading.WebMVC
         }
     }
 }
+
+// url: is what builds out the Url we see on the webpage
+// {controller} is the particular controller we are using.  
+// {action} is the ActionResult we are calling on (Create, Details, Edit, Delete)
+// {id} is an optional parameter that will only be used when we are working with a specific educator, school, and resource.
+// The EducatorId, SchoolId, and ResourceId will be added to the end of the Url in these cases.  
+// The default parameter is currently set to open the application on the Home page.
