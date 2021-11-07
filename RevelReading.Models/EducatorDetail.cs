@@ -20,6 +20,7 @@ namespace RevelReading.Models
 
         public School School { get; set; }
 
+        [Display(Name ="Grade Level Taught")]
         public int SchoolGradeLevel { get; set; }
 
         [Display(Name= "Resources")]

@@ -48,6 +48,13 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int educatorUserId)
+        {
+            var svc = CreateEducatorService();
+            var model = svc.GetEducatorById(educatorUserId);
+
+            return View(model);
+        }
 
         private EducatorService CreateEducatorService()
         {

@@ -35,6 +35,8 @@ namespace RevelReading.Data
 
         public int SchoolGradeLevel { get; set; }
 
+        public int ResourceCount { get; set; }
+
 
         [ForeignKey("Address"), Column(Order = 2)]
         public int AddressId { get; set; }

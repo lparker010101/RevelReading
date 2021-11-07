@@ -32,7 +32,7 @@ namespace RevelReading.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Educators.Add(entity);
-                return ctx.SaveChanges()==1;
+                return ctx.SaveChanges() == 1;
             }
         }
 
@@ -57,6 +57,31 @@ namespace RevelReading.Services
                 return query.ToArray();
             }
         }
+
+        public EducatorDetail GetEducatorById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Educators
+                        .Single(e => e.EducatorId == id && e.OwnerId == _educatorUserId);
+                return
+                    new EducatorDetail
+                    {
+                        EducatorId = entity.EducatorId, //ask about this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+                        FirstName = entity.FirstName,
+                        LastName = entity.LastName,
+                        EmailAddress = entity.EmailAddress,
+                        SchoolId = entity.SchoolId,
+                        School = entity.School,
+                        SchoolGradeLevel = entity.SchoolGradeLevel,
+                        ResourceCount = entity.ResourceCount,
+                        Resources = (List<ResourceListItem>)entity.Resources
+                    };
+            }
+        }
     }
 }
+
 
