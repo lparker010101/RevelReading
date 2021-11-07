@@ -19,20 +19,20 @@ namespace RevelReading.Services
 
         public bool CreateEducator(EducatorCreate model)
         {
+            var entity =
+              new Educator()
+              {
+                  OwnerId = _educatorUserId,
+                  EducatorId = model.EducatorId,
+                  FirstName = model.FirstName,
+                  LastName = model.LastName,
+                  EmailAddress = model.EmailAddress,
+              };
+
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                  new Educator()
-                  {
-                      OwnerId = _educatorUserId,
-                      EducatorId = model.EducatorId,
-                      FirstName = model.FirstName,
-                      LastName = model.LastName,
-                      EmailAddress = model.EmailAddress,
-                  };
-
                 ctx.Educators.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges()==1;
             }
         }
 

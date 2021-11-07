@@ -13,6 +13,7 @@ namespace RevelReading.WebMVC.Controllers
     public class EducatorController : Controller
     {
         // GET: Educator
+        [HttpGet]
         public ActionResult Index()
         {
             var educatorUserId = Guid.Parse(User.Identity.GetUserId());
@@ -22,36 +23,31 @@ namespace RevelReading.WebMVC.Controllers
             return View(educators);
         }
 
-        public ActionResult Create()
+        [HttpGet]
+        public ActionResult Create() // Right click to add a view after the EducatorCreate model is complete.
         {
-            return View();
+            return View();  // Need to have a view and we need a model for the view.  
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EducatorCreate model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
             {
-                return View(model);
                 var service = CreateEducatorService();
 
                 if (service.CreateEducator(model))
                 {
-                    TempData["SaveResult"] = "The educator was created."; //TempData removes information after it's accessed.
+                    TempData["SaveResult"] = "The educator was successfully added."; //TempData removes information after it's accessed.
                     return RedirectToAction("Index");
                 };
+            };
 
-                ModelState.AddModelError("", "Educator could not be created.");
-                return View(model);
-            }
-
-
-
-            return RedirectToAction("Index");  // The Create(EducatorCreate model) method makes sure the model is valid, 
-                                               // grabs the current userId, calls on EducatorCreate, and returns
-                                               // the user back to the index view.
+            ModelState.AddModelError("", "Educator could not be added.  Please try again later.");
+            return View(model);
         }
+
 
         private EducatorService CreateEducatorService()
         {
@@ -59,5 +55,10 @@ namespace RevelReading.WebMVC.Controllers
             var service = new EducatorService(educatorUserId);
             return service;
         }
+
+        // The Create(EducatorCreate model) method makes sure the model is valid, 
+        // grabs the current userId, calls on EducatorCreate, and returns
+        // the user back to the index view.
     }
 }
+
