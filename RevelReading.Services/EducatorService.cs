@@ -36,7 +36,7 @@ namespace RevelReading.Services
             }
         }
 
-        public IEnumerable<EducatorListItem> GetEducators()
+        public IEnumerable<EducatorListItem> GetAllEducators()
         {
             using (var ctx = new ApplicationDbContext())
             {
