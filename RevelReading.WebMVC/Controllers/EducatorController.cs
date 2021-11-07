@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RevelReading.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace RevelReading.WebMVC.Controllers
         // GET: Educator
         public ActionResult Index()
         {
-            return View();
+            var model = new EducatorListItem[0];
+            return View(model);
         }
     }
 }

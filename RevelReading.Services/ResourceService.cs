@@ -21,23 +21,20 @@ namespace RevelReading.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                    var entity =
-                        new Resource()
-                        {
-                            EducatorId = model.EducatorId,
-                            OwnerId = _userId,
-                            Title = model.Title,
-                            Content = model.Content,
-                            DateCreatedAndDownloaded = DateTimeOffset.Now,
-                            ModifiedResource = DateTimeOffset.Now,
-                            IsDownloadable = true,
-                            SchoolGradeLevel = model.SchoolGradeLevel,
-                            ReadingCategory = model.ReadingCategory,
-                            AccessDate = DateTime.Now
-                        };
+                var entity =
+                    new Resource()
+                    {
+                        OwnerId = _userId,
+                        EducatorId = model.EducatorId,
+                        Title = model.Title,
+                        Content = model.Content,
+                        DateCreatedAndDownloaded = DateTimeOffset.Now,
+                        SchoolGradeLevel = model.SchoolGradeLevel,
+                        ReadingCategory = model.ReadingCategory,
+                    };
 
-                    ctx.Resources.Add(entity);
-                    return ctx.SaveChanges() == 10;
+                ctx.Resources.Add(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
 
@@ -58,7 +55,7 @@ namespace RevelReading.Services
                                 {
                                     ResourceId = e.ResourceId,
                                     Title = e.Title,
-                                    CreatedUtc = e.DateCreatedAndDownloaded,
+                                    DateCreatedAndDownloaded = e.DateCreatedAndDownloaded,
                                 });
 
                 return query.ToArray();
@@ -66,3 +63,19 @@ namespace RevelReading.Services
         }
     }
 }
+
+        // Get Resource by Id
+        //public IEnumerable<ResourceListItem> GetResourceById (int id)
+       // {
+            //using (var ctx = new ApplicationDbContext())
+         //   {
+               // var entity = ctx.Resources.Find(id);
+
+               // if (entity != null)
+           //     {
+                    //var model = 
+             //   }
+            //}
+        //}
+    //}
+

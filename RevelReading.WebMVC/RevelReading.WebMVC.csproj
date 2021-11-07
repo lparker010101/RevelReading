@@ -239,10 +239,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Resource\Index.cshtml" />
     <Content Include="Views\Resource\Create.cshtml" />
+    <Content Include="Views\Educator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Educator\" />
     <Folder Include="Views\School\" />
   </ItemGroup>
   <ItemGroup>

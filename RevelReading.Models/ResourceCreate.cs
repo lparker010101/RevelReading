@@ -23,5 +23,7 @@ namespace RevelReading.Models
         public string SchoolGradeLevel { get; set; }
 
         public string ReadingCategory { get; set; }
+
+        public DateTimeOffset DateCreatedAndDownloaded { get; set; }
     }
 }

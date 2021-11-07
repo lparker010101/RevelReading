@@ -24,7 +24,7 @@ namespace RevelReading.WebMVC.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ResourceService(userId);
             var model = service.GetResources();
-                                //var model = new ResourceListItem[0]; Initializing a new instance of the ResourceListItem as an IEnumerable with the [0] syntax.  
+            //var model = new ResourceListItem[0]; Initializing a new instance of the ResourceListItem as an IEnumerable with the [0] syntax.  
             return View(model); // When we go to that path, it will return a view for that path.
         }
 
@@ -41,16 +41,25 @@ namespace RevelReading.WebMVC.Controllers
         {
             if (!ModelState.IsValid)
             {
-            return View(model);
-            }
+                return View(model);
+                var service = CreateResourceService();
 
+                if (service.CreateResource(model))
+                {
+                    TempData["SaveResult"] = "Your resource was created."; // TempDaa removes information after it's accessed.
+                    return RedirectToAction("Index");
+                };
+                // The Create(ResourceCreate model) method makes sure the model is valid, grabs the current
+            };
+            ModelState.AddModelError("", "Resource could not be created.");     // userId, calls on CreateResource, and returns the user back to the index view.
+            return View(model);
+        }
+
+        private ResourceService CreateResourceService()
+        {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ResourceService(userId);
-
-            service.CreateResource(model);
-
-            return RedirectToAction("Index");  // The Create(ResourceCreate model) method makes sure the model is valid, grabs the current
-                                               // userId, calls on CreateResource, and returns the user back to the index view.
+            return service;
         }
     }
 }
