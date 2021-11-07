@@ -7,13 +7,13 @@ namespace RevelReading.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class AgainToday : IMigrationMetadata
+    public sealed partial class TodaysMigration7 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AgainToday));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TodaysMigration7));
         
         string IMigrationMetadata.Id
         {
-            get { return "202111070241533_AgainToday"; }
+            get { return "202111072235449_TodaysMigration7"; }
         }
         
         string IMigrationMetadata.Source

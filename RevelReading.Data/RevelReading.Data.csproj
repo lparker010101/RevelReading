@@ -68,13 +68,9 @@
     <Compile Include="Entities\ResourceDataClasses\PhonicsResource.cs" />
     <Compile Include="Entities\ResourceDataClasses\VocabularyResource.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202111070213307_TodaysMigration.cs" />
-    <Compile Include="Migrations\202111070213307_TodaysMigration.Designer.cs">
-      <DependentUpon>202111070213307_TodaysMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111070241533_AgainToday.cs" />
-    <Compile Include="Migrations\202111070241533_AgainToday.Designer.cs">
-      <DependentUpon>202111070241533_AgainToday.cs</DependentUpon>
+    <Compile Include="Migrations\202111072235449_TodaysMigration7.cs" />
+    <Compile Include="Migrations\202111072235449_TodaysMigration7.Designer.cs">
+      <DependentUpon>202111072235449_TodaysMigration7.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,11 +82,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111070213307_TodaysMigration.resx">
-      <DependentUpon>202111070213307_TodaysMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111070241533_AgainToday.resx">
-      <DependentUpon>202111070241533_AgainToday.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111072235449_TodaysMigration7.resx">
+      <DependentUpon>202111072235449_TodaysMigration7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

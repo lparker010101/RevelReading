@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RevelReading.Services
 {
-    public class EducatorService
+    public class EducatorService 
     {
         private readonly Guid _educatorUserId;
 
@@ -82,6 +82,12 @@ namespace RevelReading.Services
             }
         }
     }
+
+    // The service layer handles the validation logic.  It retrieves and creates
+    // your 'Model' from various data sources (or data access objects).
+    // It updates values across various repositories/resources.
+    // It performs application-specific logic and manipulations.  
+    // The controller requests and receives from the service layer.
 }
 
 

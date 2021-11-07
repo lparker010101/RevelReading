@@ -18,8 +18,8 @@ namespace RevelReading.Data
         [Required]
         public string DistrictName { get; set; }
 
-        [ForeignKey("Address")]
-        public int AddressId { get; set; }
-        public Address Address { get; set; }
+        //[ForeignKey("Address")]
+        //public int AddressId { get; set; }
+        //public Address Address { get; set; }
     }
 }
