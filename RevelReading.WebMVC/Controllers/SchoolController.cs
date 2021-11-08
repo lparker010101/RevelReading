@@ -55,6 +55,27 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateSchoolService();
+            var detail = service.GetSchoolById(id);
+            var model =
+                new SchoolEdit
+                {
+                    SchoolId = detail.SchoolId,
+                    SchoolName = detail.SchoolName,
+                    SchoolGradeLevels = detail.SchoolGradeLevels,
+                    LowestGradeLevel = detail.LowestGradeLevel,
+                    HighestGradeLevel = detail.HighestGradeLevel,
+                    StreetAddress = detail.StreetAddress,
+                    City = detail.City,
+                    State = detail.State,
+                    ZipCode = detail.ZipCode
+                };
+
+                    return View(model);
+                }
+
         private SchoolService CreateSchoolService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

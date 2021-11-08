@@ -51,6 +51,7 @@
     <Compile Include="ResourceListItem.cs" />
     <Compile Include="SchoolModels\SchoolCreate.cs" />
     <Compile Include="SchoolModels\SchoolDetail.cs" />
+    <Compile Include="SchoolModels\SchoolEdit.cs" />
     <Compile Include="SchoolModels\SchoolListItem.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -86,5 +86,27 @@ namespace RevelReading.Services
                     };
             }
         }
+
+        public bool UpdateSchool(SchoolEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Schools
+                        .Single(e => e.SchoolId == model.SchoolId && e.OwnerId == _userId);
+
+                entity.SchoolName = model.SchoolName;
+                entity.SchoolGradeLevels = model.SchoolGradeLevels;
+                entity.LowestGradeLevel = model.LowestGradeLevel;
+                entity.HighestGradeLevel = model.HighestGradeLevel;
+                entity.StreetAddress = model.StreetAddress;
+                entity.City = model.City;
+                entity.State = model.State;
+                entity.ZipCode = model.ZipCode;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
