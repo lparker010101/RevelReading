@@ -1,4 +1,6 @@
-﻿using RevelReading.Models.SchoolModels;
+﻿using Microsoft.AspNet.Identity;
+using RevelReading.Models.SchoolModels;
+using RevelReading.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +13,14 @@ namespace RevelReading.WebMVC.Controllers
     public class SchoolController : Controller
     {
         // GET: School
-        public ActionResult Index()
+        public ActionResult Index() //The Index() method displays all the schools for the current user.  
         {
-            var model = new SchoolListItem[0];  //Initializing a new instance of the SchoolListItem as an IEnumberable with the [0] syntax.
-                                                //this safifies some requirements for our Index View.  
+            //var model = new SchoolListItem[0];  //Initializing a new instance of the SchoolListItem as an IEnumberable with the [0] syntax.
+            //this safifies some requirements for our Index View.  
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new SchoolService(userId);
+            var model = service.GetSchools();
+            
             return View(model);
         }
 
@@ -28,11 +34,24 @@ namespace RevelReading.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SchoolCreate model)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) return View(model);
+            
+            var service = CreateSchoolService();
 
+            if (service.CreateSchool(model))
+            {
+                TempData["SaveResult"] = "Your school was successfully added."; //TempData removes information after it's accessed.
+                return RedirectToAction("Index");
             }
+
             return View(model);
+        }
+
+        private SchoolService CreateSchoolService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new SchoolService(userId);
+            return service;
         }
     }
 }
