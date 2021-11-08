@@ -47,6 +47,14 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateSchoolService();
+            var model = svc.GetSchoolById(id);
+
+            return View(model);
+        }
+
         private SchoolService CreateSchoolService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

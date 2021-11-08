@@ -62,5 +62,29 @@ namespace RevelReading.Services
                 return query.ToArray();
             }
         }
+
+        public SchoolDetail GetSchoolById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Schools
+                        .Single(e => e.SchoolId == id && e.OwnerId == _userId);
+                return
+                    new SchoolDetail
+                    {
+                        SchoolId = entity.SchoolId,
+                        SchoolName = entity.SchoolName,
+                        SchoolGradeLevels = entity.SchoolGradeLevels,
+                        LowestGradeLevel = entity.LowestGradeLevel,
+                        HighestGradeLevel = entity.HighestGradeLevel,
+                        StreetAddress = entity.StreetAddress,
+                        City = entity.City,
+                        State = entity.State,
+                        ZipCode = entity.Zipcode
+                    };
+            }
+        }
     }
 }
