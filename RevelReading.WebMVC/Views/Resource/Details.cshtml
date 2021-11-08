@@ -1,0 +1,74 @@
+﻿@model RevelReading.Models.ResourceDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ResourceDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResourceId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolGradeLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolGradeLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReadingCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReadingCategory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreatedAndDownloaded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreatedAndDownloaded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedResource)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedResource)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ResourceId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

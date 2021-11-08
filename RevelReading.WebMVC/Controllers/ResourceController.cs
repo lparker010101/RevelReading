@@ -63,6 +63,22 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateResourceService();
+            var detail = service.GetResourceById(id);
+            var model =
+                new ResourceEdit
+                {
+                    ResourceId = detail.ResourceId,
+                    Title = detail.Title,
+                    Content = detail.Content,
+                    SchoolGradeLevel = detail.SchoolGradeLevel,
+                    ReadingCategory = detail.ReadingCategory
+                };
+            return View(model);
+        }
+
         private ResourceService CreateResourceService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

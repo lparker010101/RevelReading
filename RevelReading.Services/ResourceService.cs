@@ -83,21 +83,25 @@ namespace RevelReading.Services
                     };
             }
         }
+
+        public bool UpdateResource(ResourceEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Resources
+                        .Single(e => e.ResourceId == model.ResourceId && e.OwnerId == _userId);
+
+                entity.Title = model.Title;
+                entity.Content = model.Content;
+                entity.SchoolGradeLevel = model.SchoolGradeLevel;
+                entity.ReadingCategory = model.ReadingCategory;
+                entity.ModifiedResource = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            };
+        }
     }
 }
-
-        // Get Resource by Id
-        //public IEnumerable<ResourceListItem> GetResourceById (int id)
-       // {
-            //using (var ctx = new ApplicationDbContext())
-         //   {
-               // var entity = ctx.Resources.Find(id);
-
-               // if (entity != null)
-           //     {
-                    //var model = 
-             //   }
-            //}
-        //}
-    //}
 
