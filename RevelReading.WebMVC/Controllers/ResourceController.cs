@@ -79,6 +79,30 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ResourceEdit model)
+        {
+            if(!ModelState.IsValid) return View(model);
+
+            if(model.ResourceId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateResourceService();
+
+            if (service.UpdateResource(model))
+            {
+                TempData["SaveResult"] = "Your resource was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your resource could not be updated.  Try again later.");
+            return View(model);
+        }
+
         private ResourceService CreateResourceService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
