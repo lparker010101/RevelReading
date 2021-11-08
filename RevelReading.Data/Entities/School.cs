@@ -12,6 +12,7 @@ namespace RevelReading.Data
     [Table("School")]
     public class School
     {
+        public Guid OwnerId { get; set; }
         [Key]
         public int SchoolId { get; set; }
 
@@ -21,7 +22,7 @@ namespace RevelReading.Data
         public string SchoolImagePath { get; set; }
         public string SchoolGradeLevels { get; set; }
         public string LowestGradeLevel { get; set; }
-        public int HighestGradeLevel { get; set; }
+        public string HighestGradeLevel { get; set; }
         public List<Educator> Educators { get; set; } = new List<Educator>();
         
         [ForeignKey("District")]
