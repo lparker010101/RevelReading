@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RevelReading.Models.SchoolModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,13 +7,21 @@ using System.Web.Mvc;
 
 namespace RevelReading.WebMVC.Controllers
 {
+    [Authorize] //C# Attribute: This annotation makes it so that the views are accessible only to logged in users.
     public class SchoolController : Controller
     {
         // GET: School
         public ActionResult Index()
         {
-            return View();
+            var model = new SchoolListItem[0];  //Initializing a new instance of the SchoolListItem as an IEnumberable with the [0] syntax.
+                                                //this safifies some requirements for our Index View.  
+            return View(model);
         }
+    }
+
+    public ActionResult Create()
+    {
+        return View();
     }
 }
 

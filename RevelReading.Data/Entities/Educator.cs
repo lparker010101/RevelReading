@@ -38,9 +38,9 @@ namespace RevelReading.Data
         public int ResourceCount { get; set; }
 
 
-        //[ForeignKey("Address"), Column(Order = 2)]
-        //public int AddressId { get; set; }
-        //public Address Address { get; set; }
+        [ForeignKey("Address"), Column(Order = 2)]
+        public int AddressId { get; set; }
+        public Address Address { get; set; }
 
         public virtual ICollection<Resource> Resources { get; set; } // A virtual method is a declared class that allows overriding
                                                                      // by a method with the same derived class signature.  They

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RevelReading.Models.SchoolModels.SchoolListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolGradeLevels)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LowestGradeLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighestGradeLevel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolGradeLevels)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LowestGradeLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HighestGradeLevel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

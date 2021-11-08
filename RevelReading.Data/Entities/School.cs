@@ -28,8 +28,8 @@ namespace RevelReading.Data
         public int DistrictId { get; set; }
         public District District { get; set; }
 
-        //[ForeignKey("Address")]
-        //public int AddressId { get; set; }
-        //public Address Address { get; set; }
+        [ForeignKey("Address")]
+        public int AddressId { get; set; }
+        public Address Address { get; set; }
     }
 }
