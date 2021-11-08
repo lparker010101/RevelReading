@@ -100,6 +100,20 @@ namespace RevelReading.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteEducator(int EducatorUserId)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Educators
+                        .Single(e => e.EducatorId == EducatorUserId && e.OwnerId == _educatorUserId);
+                ctx.Educators.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 
     // The service layer handles the validation logic.  It retrieves and creates

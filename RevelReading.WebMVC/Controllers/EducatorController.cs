@@ -73,6 +73,7 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        [HttpPut]
         public ActionResult Edit(int EducatorUserId, EducatorEdit model) 
         {
             if(!ModelState.IsValid) return View(model);
@@ -95,6 +96,27 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        [ActionName(name: "Delete")]
+        public ActionResult Delete(int EducatorUserId)
+        {
+            var svc = CreateEducatorService();
+            var model = svc.GetEducatorById(EducatorUserId);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int EducatorUserId)
+        {
+            var service = CreateEducatorService();
+            service.DeleteEducator(EducatorUserId);
+
+            TempData["SaveResult"] = "Your profile information was successsfully deleted.";
+
+            return RedirectToAction("Index");
+        }
 
         private EducatorService CreateEducatorService()
         {
@@ -102,7 +124,6 @@ namespace RevelReading.WebMVC.Controllers
             var service = new EducatorService(educatorUserId);
             return service;
         }
-
     }
 }
         // The Create(EducatorCreate model) method makes sure the model is valid, 
