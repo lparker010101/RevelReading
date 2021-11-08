@@ -246,6 +246,7 @@
     <Content Include="Views\Educator\Delete.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeOffset.cshtml" />
     <Content Include="Views\School\Index.cshtml" />
+    <Content Include="Views\School\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

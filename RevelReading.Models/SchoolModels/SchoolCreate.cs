@@ -9,7 +9,10 @@ namespace RevelReading.Models.SchoolModels
 {
     public class SchoolCreate
     {
+        [Required]
         [Display(Name ="School Name")]
+        [MinLength(2, ErrorMessage ="Please enter at least 2 characters.  Try again.")]
+        [MaxLength(45, ErrorMessage ="There are too many characters in this field.  Try again.")]
         public string SchoolName { get; set; }
 
         [Display(Name ="Grade Levels")]

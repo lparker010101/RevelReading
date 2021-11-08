@@ -84,7 +84,7 @@ namespace RevelReading.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateEducatorService());
+            var service = CreateEducatorService();
 
             if (service.UpdateEducator(model))
             {

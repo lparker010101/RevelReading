@@ -17,11 +17,23 @@ namespace RevelReading.WebMVC.Controllers
                                                 //this safifies some requirements for our Index View.  
             return View(model);
         }
-    }
 
-    public ActionResult Create()
-    {
-        return View();
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(SchoolCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View(model);
+        }
     }
 }
 
