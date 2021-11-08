@@ -103,6 +103,19 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var svc = CreateResourceService();
+            Services.DeleteResource(id);
+
+            TempData["SaveResult"] = "Your resource was successfully deleted.";
+
+            return RedirectToAction("Index");
+        }
+
         private ResourceService CreateResourceService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

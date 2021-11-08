@@ -86,7 +86,7 @@ namespace RevelReading.Services
 
         public bool UpdateResource(ResourceEdit model)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
@@ -101,6 +101,21 @@ namespace RevelReading.Services
 
                 return ctx.SaveChanges() == 1;
             };
+        }
+
+        public bool DeleteResource(int resourceId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Resources
+                        .Single(e => e.ResourceId == resourceId && e.OwnerId == _userId);
+
+                ctx.Resources.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
         }
     }
 }
