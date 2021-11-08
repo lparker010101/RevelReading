@@ -100,6 +100,21 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateSchoolService();
+
+            service.DeleteSchool(id);
+
+            TempData["SaveResult"] = "Your school information was successfully deleted.";
+
+            return RedirectToAction("Index");
+        }
+
+
         private SchoolService CreateSchoolService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

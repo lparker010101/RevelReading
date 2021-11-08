@@ -108,5 +108,20 @@ namespace RevelReading.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteSchool(int SchoolId)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Schools
+                        .Single(e => e.SchoolId == SchoolId && e.OwnerId == _userId);
+
+                ctx.Schools.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
