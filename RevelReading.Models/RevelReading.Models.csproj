@@ -49,12 +49,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceCreate.cs" />
     <Compile Include="ResourceListItem.cs" />
+    <Compile Include="SchoolModels\SchoolListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RevelReading.Data\RevelReading.Data.csproj">
       <Project>{4B3A24AA-3C4A-441E-816D-9707E77EEE65}</Project>
       <Name>RevelReading.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EducatorModels\" />
+    <Folder Include="ResourceModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
