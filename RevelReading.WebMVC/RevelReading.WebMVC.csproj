@@ -244,6 +244,7 @@
     <Content Include="Views\Educator\Details.cshtml" />
     <Content Include="Views\Educator\Edit.cshtml" />
     <Content Include="Views\Educator\Delete.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTimeOffset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
