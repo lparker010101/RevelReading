@@ -61,6 +61,28 @@ namespace RevelReading.Services
                 return query.ToArray();
             }
         }
+
+        public ResourceDetail GetResourceById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Resources
+                        .Single(e => e.ResourceId == id && e.OwnerId == _userId);
+                return
+                    new ResourceDetail
+                    {
+                        ResourceId = entity.ResourceId,
+                        Title = entity.Title,
+                        Content = entity.Content,
+                        SchoolGradeLevel = entity.SchoolGradeLevel,
+                        ReadingCategory = entity.ReadingCategory,
+                        DateCreatedAndDownloaded = entity.DateCreatedAndDownloaded,
+                        ModifiedResource = entity.ModifiedResource
+                    };
+            }
+        }
     }
 }
 
