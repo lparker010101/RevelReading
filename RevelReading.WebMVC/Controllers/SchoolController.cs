@@ -76,6 +76,30 @@ namespace RevelReading.WebMVC.Controllers
                     return View(model);
                 }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, SchoolEdit model)
+        {
+            if(!ModelState.IsValid) return View(model);
+
+            if(model.SchoolId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateSchoolService();
+
+            if (service.UpdateSchool(model))
+            {
+                TempData["SaveResult"] = "Your school information was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your school information could not be updated.  Try again later.");
+            return View(model);
+        }
+
         private SchoolService CreateSchoolService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
