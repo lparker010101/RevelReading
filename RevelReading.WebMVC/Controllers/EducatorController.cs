@@ -48,7 +48,7 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Details(int educatorUserId)
+        public ActionResult Details(int educatorUserId)  
         {
             var svc = CreateEducatorService();
             var model = svc.GetEducatorById(educatorUserId);
@@ -56,7 +56,10 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Edit(int EducatorUserId)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int EducatorUserId)  //An overloaded Edit ActionResult.  Overloading happens when you have
+                                                      //two methods with the same name but different signatures(or arguments).
         {
             var service = CreateEducatorService();
             var detail = service.GetEducatorById(EducatorUserId);
@@ -69,6 +72,29 @@ namespace RevelReading.WebMVC.Controllers
                 };
             return View(model);
         }
+
+        public ActionResult Edit(int EducatorUserId, EducatorEdit model) 
+        {
+            if(!ModelState.IsValid) return View(model);
+
+            if(model.EducatorId != EducatorUserId)
+            {
+                ModelState.AddModelError("", "Id Mismatch"); // Ask about this ??????????????
+                return View(model);
+            }
+
+            var service = CreateEducatorService());
+
+            if (service.UpdateEducator(model))
+            {
+                TempData["Save Result"] = "Your profile information was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your profile information could not be updated.  Please try again later");
+            return View(model);
+        }
+
 
         private EducatorService CreateEducatorService()
         {

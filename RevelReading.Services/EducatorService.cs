@@ -65,7 +65,10 @@ namespace RevelReading.Services
                 var entity =
                     ctx
                         .Educators
-                        .Single(e => e.EducatorId == id && e.OwnerId == _educatorUserId);
+                        .Single(e => e.EducatorId == id && e.OwnerId == _educatorUserId);  //To create a lamda expression, use a lamda declaration operator => to separate
+                                                                                           //lamda's parameter list from it's body.  
+                                                                                           //Specify input parameters(if any) on the left side of the lamda 
+                                                                                           //operator and an expression or a statement block on the other side.
                 return
                     new EducatorDetail
                     {

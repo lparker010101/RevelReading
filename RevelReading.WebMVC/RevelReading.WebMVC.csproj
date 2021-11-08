@@ -242,6 +242,7 @@
     <Content Include="Views\Educator\Index.cshtml" />
     <Content Include="Views\Educator\Create.cshtml" />
     <Content Include="Views\Educator\Details.cshtml" />
+    <Content Include="Views\Educator\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
