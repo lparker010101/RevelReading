@@ -68,9 +68,9 @@
     <Compile Include="Entities\ResourceDataClasses\PhonicsResource.cs" />
     <Compile Include="Entities\ResourceDataClasses\VocabularyResource.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202111090305524_InitialMigration.cs" />
-    <Compile Include="Migrations\202111090305524_InitialMigration.Designer.cs">
-      <DependentUpon>202111090305524_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202111090326053_InitialMigration.cs" />
+    <Compile Include="Migrations\202111090326053_InitialMigration.Designer.cs">
+      <DependentUpon>202111090326053_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,8 +82,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111090305524_InitialMigration.resx">
-      <DependentUpon>202111090305524_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111090326053_InitialMigration.resx">
+      <DependentUpon>202111090326053_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -29,9 +29,11 @@ namespace RevelReading.Data
         [EmailAddress]
         public string EmailAddress { get; set; }
 
-        [ForeignKey("School"), Column(Order = 1)]
-        public int SchoolId { get; set; }
-        public School School { get; set; }
+        public virtual School School { get; set; }
+
+        //[ForeignKey("School"), Column(Order = 1)]
+        //public int SchoolId { get; set; }
+        //public School School { get; set; }
 
         public int SchoolGradeLevel { get; set; }
 

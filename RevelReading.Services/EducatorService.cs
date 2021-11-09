@@ -76,7 +76,6 @@ namespace RevelReading.Services
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         EmailAddress = entity.EmailAddress,
-                        SchoolId = entity.SchoolId,
                         School = entity.School,
                         SchoolGradeLevel = entity.SchoolGradeLevel,
                         ResourceCount = entity.ResourceCount,

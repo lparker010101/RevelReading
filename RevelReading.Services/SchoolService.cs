@@ -119,3 +119,7 @@ namespace RevelReading.Services
         }
     }
 }
+
+// Note To Self: 
+// User looks at View with text fields.  View passes model into controller.  Controller passes it to Service.  Service takes 
+// the Model and projects data into database.
