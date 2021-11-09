@@ -109,7 +109,7 @@ namespace RevelReading.WebMVC.Controllers
         public ActionResult DeletePost(int id)
         {
             var svc = CreateResourceService();
-            Services.DeleteResource(id);
+            svc.DeleteResource(id);
 
             TempData["SaveResult"] = "Your resource was successfully deleted.";
 

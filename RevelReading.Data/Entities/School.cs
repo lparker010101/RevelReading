@@ -13,8 +13,11 @@ namespace RevelReading.Data
     public class School
     {
         public Guid OwnerId { get; set; }
+
         [Key]
         public int SchoolId { get; set; }
+
+        public int EducatorId { get; set; }
 
         [Required]
         public string SchoolName { get; set; }
@@ -25,12 +28,10 @@ namespace RevelReading.Data
         public string HighestGradeLevel { get; set; }
         public List<Educator> Educators { get; set; } = new List<Educator>();
         
-        [ForeignKey("District")]
-        public int DistrictId { get; set; }
-        public District District { get; set; }
+        //[ForeignKey("District")]
+        //public int DistrictId { get; set; }
+        //public District District { get; set; }
 
-        [ForeignKey("Address")]
-        public int AddressId { get; set; }
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
     }
 }

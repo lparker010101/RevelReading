@@ -1,5 +1,7 @@
 ﻿using RevelReading.Data;
+using RevelReading.Data.Entities;
 using RevelReading.Models.SchoolModels;
+using RevelReading.Services.HelperModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,7 @@ namespace RevelReading.Services
     public class SchoolService //The service layer is how our application interacts with the database.  
     {
         private readonly Guid _userId; //Constructor: A method in the class which gets executed when a class object is created.  
+        private readonly AddressHelperModel _addressHelper = new AddressHelperModel();
 
         public SchoolService(Guid userId)
         {
@@ -27,11 +30,10 @@ namespace RevelReading.Services
                     SchoolGradeLevels = model.SchoolGradeLevels,
                     LowestGradeLevel = model.LowestGradeLevel,
                     HighestGradeLevel = model.HighestGradeLevel,
-                    StreetAddress = model.StreetAddress,
-                    City = model.City,
-                    State = model.State,
-                    ZipCode = model.ZipCode
+                    Address = _addressHelper.CreateAddress(model),
+                    EducatorId = model.EducatorId
                 };
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Schools.Add(entity);
@@ -79,10 +81,6 @@ namespace RevelReading.Services
                         SchoolGradeLevels = entity.SchoolGradeLevels,
                         LowestGradeLevel = entity.LowestGradeLevel,
                         HighestGradeLevel = entity.HighestGradeLevel,
-                        StreetAddress = entity.StreetAddress,
-                        City = entity.City,
-                        State = entity.State,
-                        ZipCode = entity.Zipcode
                     };
             }
         }
@@ -100,10 +98,6 @@ namespace RevelReading.Services
                 entity.SchoolGradeLevels = model.SchoolGradeLevels;
                 entity.LowestGradeLevel = model.LowestGradeLevel;
                 entity.HighestGradeLevel = model.HighestGradeLevel;
-                entity.StreetAddress = model.StreetAddress;
-                entity.City = model.City;
-                entity.State = model.State;
-                entity.ZipCode = model.ZipCode;
 
                 return ctx.SaveChanges() == 1;
             }

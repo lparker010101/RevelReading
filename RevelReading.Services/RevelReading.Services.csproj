@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EducatorService.cs" />
-    <Compile Include="HelperModels\ResourceHelperModel.cs" />
+    <Compile Include="HelperModels\AddressHelperModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceService.cs" />
     <Compile Include="SchoolService.cs" />

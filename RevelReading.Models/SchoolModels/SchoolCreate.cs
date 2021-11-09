@@ -9,6 +9,9 @@ namespace RevelReading.Models.SchoolModels
 {
     public class SchoolCreate
     {
+        [Key]
+        public int EducatorId { get; set; }
+
         [Required]
         [Display(Name ="School Name")]
         [MinLength(2, ErrorMessage ="Please enter at least 2 characters.  Try again.")]
@@ -24,6 +27,7 @@ namespace RevelReading.Models.SchoolModels
         [Display(Name ="Highest Grade Level")]
         public string HighestGradeLevel { get; set; }
 
+        [Required]
         [Display(Name ="Street Address")]
         public string StreetAddress { get; set; }
 
