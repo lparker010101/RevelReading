@@ -26,11 +26,11 @@ namespace RevelReading.Models
         [Display(Name= "Resources")]
         public int ResourceCount { get; set; }
 
-        public List<ResourceListItem> Resources { get; set; }
+        public ICollection<Resource> Resources { get; set; }
         
         public EducatorDetail() { }
 
-        public EducatorDetail(int educatorId, string firstName, string lastName, string emailAddress, int schoolId, School school, int schoolGradeLevel, int resourceCount, List<ResourceListItem> resources)
+        public EducatorDetail(int educatorId, string firstName, string lastName, string emailAddress, int schoolId, School school, int schoolGradeLevel, int resourceCount, ICollection<Resource> resources)
         {
             this.EducatorId = educatorId;
             this.FirstName = firstName;

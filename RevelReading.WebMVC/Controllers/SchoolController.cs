@@ -19,9 +19,9 @@ namespace RevelReading.WebMVC.Controllers
             //this safifies some requirements for our Index View.  
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new SchoolService(userId);
-            var model = service.GetSchools();
+            var schools = service.GetSchools();
             
-            return View(model);
+            return View(schools);
         }
 
         [HttpGet]
@@ -34,16 +34,21 @@ namespace RevelReading.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SchoolCreate model)
         {
-            if (ModelState.IsValid) return View(model);
-            
-            var service = CreateSchoolService();
-
-            if (service.CreateSchool(model))
+            if (!ModelState.IsValid)
             {
-                TempData["SaveResult"] = "Your school was successfully added."; //TempData removes information after it's accessed.
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "School could not be added.  Please try again later.");
+                return View(model);
             }
 
+            {
+                var service = CreateSchoolService();
+
+                if (service.CreateSchool(model))
+                {
+                    TempData["SaveResult"] = "Your school was successfully added."; //TempData removes information after it's accessed.
+                    return RedirectToAction("Index");
+                };
+            };
             return View(model);
         }
 
@@ -100,10 +105,19 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
+        [ActionName(name: "Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateSchoolService();
+            var model = svc.GetSchoolById(id);
+
+            return View(model);
+        }
+
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeletePost(int id)
+        public ActionResult DeleteSchoolById(int id)
         {
             var service = CreateSchoolService();
 

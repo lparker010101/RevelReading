@@ -9,6 +9,9 @@ namespace RevelReading.Models.SchoolModels
 {
     public class SchoolCreate
     {
+        [Required]
+        public int SchoolId { get; set; }
+
         [Key]
         public int EducatorId { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using RevelReading.Data;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using RevelReading.Data;
 using RevelReading.Data.Entities;
 using RevelReading.Models.SchoolModels;
 using RevelReading.Services.HelperModels;
@@ -41,6 +42,25 @@ namespace RevelReading.Services
             }
         }
 
+        //public static List<SelectListItem> GetStatesForDropDown()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .Schools
+        //                .Select(
+        //                    e =>
+        //                        new SelectListItem
+        //                        {
+        //                            Text = e.Address,
+        //                            Value = 
+        //                        }
+        //                );
+        //        return query.ToArray();
+        //    }
+        //}
+
         public IEnumerable<SchoolListItem> GetSchools()
         {
             using (var ctx = new ApplicationDbContext())
@@ -81,6 +101,10 @@ namespace RevelReading.Services
                         SchoolGradeLevels = entity.SchoolGradeLevels,
                         LowestGradeLevel = entity.LowestGradeLevel,
                         HighestGradeLevel = entity.HighestGradeLevel,
+                        StreetAddress = entity.Address.StreetAddress,
+                        City = entity.Address.City,
+                        State = entity.Address.State,
+                        ZipCode = entity.Address.Zipcode
                     };
             }
         }
@@ -98,6 +122,10 @@ namespace RevelReading.Services
                 entity.SchoolGradeLevels = model.SchoolGradeLevels;
                 entity.LowestGradeLevel = model.LowestGradeLevel;
                 entity.HighestGradeLevel = model.HighestGradeLevel;
+                entity.Address.StreetAddress = model.StreetAddress;
+                entity.Address.City = model.City;
+                entity.Address.State = model.State;
+                entity.Address.Zipcode = model.ZipCode;
 
                 return ctx.SaveChanges() == 1;
             }

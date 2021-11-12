@@ -47,7 +47,10 @@ namespace RevelReading.Data
         public virtual ICollection<Resource> Resources { get; set; } // A virtual method is a declared class that allows overriding
                                                                      // by a method with the same derived class signature.  They
                                                                      // allow a program to call methods that don't necessarily even exist
-                                                                     // at the moment the code is compiled.
+                                                                     // at the moment the code is compiled.  
+                                                                     // Storing resource virtually in the educator table.  Because we
+                                                                     // are storing the resources for real in the resource table.  Don't 
+                                                                     // want duplicate data in 2 tables.  
     }
 }
 

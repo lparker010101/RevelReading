@@ -27,11 +27,10 @@ namespace RevelReading.Data
         public string LowestGradeLevel { get; set; }
         public string HighestGradeLevel { get; set; }
         public List<Educator> Educators { get; set; } = new List<Educator>();
+        public virtual Address Address { get; set; }
         
         //[ForeignKey("District")]
         //public int DistrictId { get; set; }
         //public District District { get; set; }
-
-        public virtual Address Address { get; set; }
     }
 }

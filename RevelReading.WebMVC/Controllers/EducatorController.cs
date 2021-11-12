@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using RevelReading.Data;
 using RevelReading.Models;
 using RevelReading.Services;
 using System;
@@ -34,6 +35,7 @@ namespace RevelReading.WebMVC.Controllers
         public ActionResult Create(EducatorCreate model)  // Create an educator.
         {
             if (!ModelState.IsValid) return View(model);
+
             {
                 var service = CreateEducatorService();
 
@@ -48,24 +50,23 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Details(int educatorUserId)  
+        public ActionResult Details(int id)  
         {
             var svc = CreateEducatorService();
-            var model = svc.GetEducatorById(educatorUserId);
+            var model = svc.GetEducatorById(id);
 
             return View(model);
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int EducatorUserId)  //An overloaded Edit ActionResult.  Overloading happens when you have
+        
+        public ActionResult Edit(int id)  //An overloaded Edit ActionResult.  Overloading happens when you have
                                                       //two methods with the same name but different signatures(or arguments).
         {
             var service = CreateEducatorService();
-            var detail = service.GetEducatorById(EducatorUserId);
+            var detail = service.GetEducatorById(id);
             var model =
                 new EducatorEdit
                 {
+                    EducatorId = detail.EducatorId,
                     FirstName = detail.FirstName,
                     LastName = detail.LastName,
                     EmailAddress = detail.EmailAddress
@@ -73,16 +74,17 @@ namespace RevelReading.WebMVC.Controllers
             return View(model);
         }
 
-        [HttpPut]
-        public ActionResult Edit(int EducatorUserId, EducatorEdit model) 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EducatorEdit model) 
         {
             if(!ModelState.IsValid) return View(model);
 
-            if(model.EducatorId != EducatorUserId)
-            {
-                ModelState.AddModelError("", "Id Mismatch"); // Ask about this ??????????????
-                return View(model);
-            }
+            //if(model.EducatorId)
+            //{
+            //    ModelState.AddModelError("", "Id Mismatch"); 
+            //    return View(model);
+            //}
 
             var service = CreateEducatorService();
 
@@ -97,10 +99,10 @@ namespace RevelReading.WebMVC.Controllers
         }
 
         [ActionName(name: "Delete")]
-        public ActionResult Delete(int EducatorUserId)
+        public ActionResult Delete(int id)
         {
             var svc = CreateEducatorService();
-            var model = svc.GetEducatorById(EducatorUserId);
+            var model = svc.GetEducatorById(id);
 
             return View(model);
         }
@@ -108,20 +110,30 @@ namespace RevelReading.WebMVC.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeletePost(int EducatorUserId)
+        public ActionResult DeleteEducatorById(int id)
         {
             var service = CreateEducatorService();
-            service.DeleteEducator(EducatorUserId);
 
-            TempData["SaveResult"] = "Your profile information was successsfully deleted.";
-
+            try
+            {
+                service.DeleteEducator(id);
+            }
+            catch (Exception user)
+            {
+                throw user;
+            }
             return RedirectToAction("Index");
+            //service.DeleteEducator(EducatorId);
+
+            //TempData["SaveResult"] = "Your profile information was successsfully deleted.";
+
+            //return RedirectToAction("Index");
         }
 
         private EducatorService CreateEducatorService()
         {
-            var educatorUserId = Guid.Parse(User.Identity.GetUserId());
-            var service = new EducatorService(educatorUserId);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new EducatorService(userId);
             return service;
         }
     }

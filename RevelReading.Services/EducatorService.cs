@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace RevelReading.Services
 {
-    public class EducatorService 
+    public class EducatorService // The service layer is how our application interacts with the database.
     {
-        private readonly Guid _educatorUserId;
+        private readonly Guid _userId;
 
-        public EducatorService(Guid educatorUserId)
+        public EducatorService(Guid userId)
         {
-            _educatorUserId = educatorUserId;
+            _userId = userId;
         }
 
         public bool CreateEducator(EducatorCreate model)
@@ -22,7 +22,7 @@ namespace RevelReading.Services
             var entity =
               new Educator()
               {
-                  OwnerId = _educatorUserId,
+                  OwnerId = _userId,
                   EducatorId = model.EducatorId,
                   FirstName = model.FirstName,
                   LastName = model.LastName,
@@ -43,7 +43,7 @@ namespace RevelReading.Services
                 var query =
                     ctx
                         .Educators
-                        .Where(e => e.OwnerId == _educatorUserId)
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new EducatorListItem
@@ -65,21 +65,19 @@ namespace RevelReading.Services
                 var entity =
                     ctx
                         .Educators
-                        .Single(e => e.EducatorId == id && e.OwnerId == _educatorUserId);  //To create a lamda expression, use a lamda declaration operator => to separate
-                                                                                           //lamda's parameter list from it's body.  
-                                                                                           //Specify input parameters(if any) on the left side of the lamda 
+                        .Single(e => e.EducatorId == id && e.OwnerId == _userId);  //To create a lamda expression, use a lamda declaration operator => to separate
                                                                                            //operator and an expression or a statement block on the other side.
                 return
                     new EducatorDetail
                     {
-                        EducatorId = entity.EducatorId, //ask about this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+                        EducatorId = entity.EducatorId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         EmailAddress = entity.EmailAddress,
                         School = entity.School,
                         SchoolGradeLevel = entity.SchoolGradeLevel,
                         ResourceCount = entity.ResourceCount,
-                        Resources = (List<ResourceListItem>)entity.Resources
+                        Resources = entity.Resources
                     };
             }
         }
@@ -91,7 +89,7 @@ namespace RevelReading.Services
                 var entity =
                     ctx
                         .Educators
-                        .Single(e => e.EducatorId == model.EducatorId && e.OwnerId == _educatorUserId);
+                        .Single(e => e.EducatorId == model.EducatorId && e.OwnerId == _userId);
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
                 entity.EmailAddress = model.EmailAddress;
@@ -100,14 +98,14 @@ namespace RevelReading.Services
             }
         }
 
-        public bool DeleteEducator(int EducatorUserId)
+        public bool DeleteEducator(int id)
         {
             using(var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Educators
-                        .Single(e => e.EducatorId == EducatorUserId && e.OwnerId == _educatorUserId);
+                        .Single(e => e.EducatorId == id && e.OwnerId == _userId);
                 ctx.Educators.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
