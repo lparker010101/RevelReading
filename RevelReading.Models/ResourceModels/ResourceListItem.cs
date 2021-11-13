@@ -14,5 +14,8 @@ namespace RevelReading.Models
 
         [Display(Name = "Created")]
         public DateTimeOffset DateCreatedAndDownloaded { get; set; }
+
+        [Display(Name = "Date Last Viewed")]
+        public DateTime AccessDate { get; set; }
     }
 }

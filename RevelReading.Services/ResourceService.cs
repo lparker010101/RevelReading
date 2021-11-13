@@ -18,25 +18,26 @@ namespace RevelReading.Services
         }
 
         public bool CreateResource(ResourceCreate model)
-        {
-            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     new Resource()
                     {
                         OwnerId = _userId,
                         EducatorId = model.EducatorId,
+                        //ResourceId = model.ResourceId,
                         Title = model.Title,
                         Content = model.Content,
-                        DateCreatedAndDownloaded = DateTimeOffset.Now,
                         SchoolGradeLevel = model.SchoolGradeLevel,
                         ReadingCategory = model.ReadingCategory,
+                        DateCreatedAndDownloaded = DateTime.Now,
+                        AccessDate = DateTime.Now
                     };
-
+                using (var ctx = new ApplicationDbContext())
+                {
                 ctx.Resources.Add(entity);
                 return ctx.SaveChanges() == 1;
+                }
             }
-        }
 
         // Get Resources
         public IEnumerable<ResourceListItem> GetResources()
@@ -56,6 +57,7 @@ namespace RevelReading.Services
                                     ResourceId = e.ResourceId,
                                     Title = e.Title,
                                     DateCreatedAndDownloaded = e.DateCreatedAndDownloaded,
+                                    AccessDate = e.AccessDate
                                 });
 
                 return query.ToArray();
@@ -97,24 +99,24 @@ namespace RevelReading.Services
                 entity.Content = model.Content;
                 entity.SchoolGradeLevel = model.SchoolGradeLevel;
                 entity.ReadingCategory = model.ReadingCategory;
-                entity.ModifiedResource = DateTimeOffset.UtcNow;
+                //entity.ModifiedResource = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
             };
         }
 
-        public bool DeleteResource(int resourceId)
+        public bool DeleteResource(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Resources
-                        .Single(e => e.ResourceId == resourceId && e.OwnerId == _userId);
+                        .Single(e => e.ResourceId == id && e.OwnerId == _userId);
 
                 ctx.Resources.Remove(entity);
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() > 0;
             }
         }
     }

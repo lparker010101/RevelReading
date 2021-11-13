@@ -36,19 +36,17 @@ namespace RevelReading.WebMVC.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "School could not be added.  Please try again later.");
                 return View(model);
             }
-
-            {
                 var service = CreateSchoolService();
 
                 if (service.CreateSchool(model))
                 {
                     TempData["SaveResult"] = "Your school was successfully added."; //TempData removes information after it's accessed.
                     return RedirectToAction("Index");
-                };
-            };
+                }
+
+            ModelState.AddModelError("", "School could not be added.  Please try again later.");
             return View(model);
         }
 

@@ -42,11 +42,14 @@ namespace RevelReading.WebMVC.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
+            }
+
+            {
                 var service = CreateResourceService();
 
                 if (service.CreateResource(model))
                 {
-                    TempData["SaveResult"] = "Your resource was created."; // TempDaa removes information after it's accessed.
+                    TempData["SaveResult"] = "Your resource was created."; // TempData removes information after it's accessed.
                     return RedirectToAction("Index");
                 };
                 // The Create(ResourceCreate model) method makes sure the model is valid, grabs the current
@@ -83,9 +86,9 @@ namespace RevelReading.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ResourceEdit model)
         {
-            if(!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(model);
 
-            if(model.ResourceId != id)
+            if (model.ResourceId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
@@ -100,6 +103,15 @@ namespace RevelReading.WebMVC.Controllers
             }
 
             ModelState.AddModelError("", "Your resource could not be updated.  Try again later.");
+            return View(model);
+        }
+
+        [ActionName(name: "Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateResourceService();
+            var model = svc.GetResourceById(id);
+
             return View(model);
         }
 

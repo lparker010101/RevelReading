@@ -38,7 +38,8 @@ namespace RevelReading.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Schools.Add(entity);
-                return ctx.SaveChanges() == 1;
+                //int changes = ctx.SaveChanges();
+                return ctx.SaveChanges() > 0; //returns integer that represents a number of rows.  How many rows were updated in database.
             }
         }
 
@@ -53,8 +54,8 @@ namespace RevelReading.Services
         //                    e =>
         //                        new SelectListItem
         //                        {
-        //                            Text = e.Address,
-        //                            Value = 
+        //                            Text = 
+        //                            Value =
         //                        }
         //                );
         //        return query.ToArray();

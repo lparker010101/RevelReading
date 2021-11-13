@@ -13,7 +13,7 @@ namespace RevelReading.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202111090351203_InitialMigration"; }
+            get { return "202111131801252_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

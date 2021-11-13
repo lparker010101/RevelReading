@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,10 @@ using System.Threading.Tasks;
 namespace RevelReading.Models
 {
     public class ResourceCreate
+
     {
-        public int ResourceId { get; set; }
         public int EducatorId { get; set; }
+        //public int ResourceId { get; set; }
 
         [Required]
         [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
@@ -25,7 +27,6 @@ namespace RevelReading.Models
 
         public string ReadingCategory { get; set; }
 
-        public DateTimeOffset DateCreatedAndDownloaded { get; set; }
-        public DateTimeOffset? ModifiedResource { get; set; }
+       // public DateTimeOffset DateCreatedAndDownloaded { get; set; }
     }
 }
