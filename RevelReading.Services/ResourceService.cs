@@ -101,7 +101,7 @@ namespace RevelReading.Services
                 entity.ReadingCategory = model.ReadingCategory;
                 //entity.ModifiedResource = DateTimeOffset.UtcNow;
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() > 0;
             };
         }
 
