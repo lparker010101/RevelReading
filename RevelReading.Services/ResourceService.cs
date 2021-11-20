@@ -35,7 +35,7 @@ namespace RevelReading.Services
                 using (var ctx = new ApplicationDbContext())
                 {
                 ctx.Resources.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() > 0;
                 }
             }
 
